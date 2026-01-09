@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Heights - Emaar Investment Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1d1d1f;
+            --secondary: #86868b;
+            --accent: #0071e3;
+            --gold: #f5a623;
+            --light-gold: #ffb84d;
+            --white: #ffffff;
+            --light-bg: #f5f5f7;
+            --border: #d2d2d7;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--white);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 0 2rem 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .header-label {
+            font-size: 1rem;
+            color: var(--secondary);
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .header-subtitle {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .header-contact {
+            font-size: 1rem;
+            color: var(--secondary);
+        }
+
+        .header-contact strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .header-contact a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header-contact a:hover {
+            color: var(--gold);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .performance-header {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .highlight-text {
+            font-size: 1.8rem;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--primary);
+        }
+
+        .highlight-number {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2rem 0;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        th {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            font-size: 1rem;
+            color: var(--primary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background: var(--light-bg);
+        }
+
+        .table-highlight {
+            background: rgba(245, 166, 35, 0.1) !important;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .comparison-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .comparison-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .ca-result {
+            font-size: 2rem;
+            color: var(--gold);
+            text-align: center;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: 12px;
+        }
+
+        .info-card {
+            background: var(--light-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .info-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .cluster-info {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .cluster-info h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .roi-scenarios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .scenario-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .scenario-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .scenario-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .scenario-details {
+            margin: 1rem 0;
+        }
+
+        .scenario-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: var(--light-bg);
+            border-radius: 8px;
+        }
+
+        .scenario-label {
+            color: var(--secondary);
+            font-size: 0.95rem;
+        }
+
+        .scenario-value {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--light-bg);
+            border-radius: 20px;
+            margin-top: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.8;
+            color: var(--secondary);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .cta-button {
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: scale(1.05);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            background: var(--light-bg);
+        }
+
+        footer p {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0.5rem auto;
+        }
+
+        footer .footer-title {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .highlight-text {
+                font-size: 1.3rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.8rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-label">Comparative Analysis</div>
+            <h1>THE HEIGHTS</h1>
+            <div class="header-subtitle">Country Club & Wellness</div>
+            <div class="header-contact">
+                Prepared by <strong>Viren</strong> | <a href="tel:+971585877330">+971 58 587 7330</a>
+            </div>
+        </div>
+
+        <!-- Performance Header -->
+        <section class="section">
+            <h2 class="performance-header">Performance of Emaar's First Launches</h2>
+        </section>
+
+        <!-- Villas Release Section -->
+        <section class="section">
+            <h2 class="section-title">The Heights - First Villas Release</h2>
+            
+            <div class="price-table-container">
+                <h3 style="color: var(--primary); font-size: 1.75rem; text-align: center; margin-bottom: 2rem; font-weight: 600;">Sizes & Prices</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Price (AED)</th>
+                            <th>Plot (sft)</th>
+                            <th>BUA (sft)</th>
+                            <th>Avg. PSF</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>3BR</strong></td>
+                            <td>~5,500,000</td>
+                            <td>4,322</td>
+                            <td>3,340</td>
+                            <td rowspan="3" style="vertical-align: middle;"><strong style="font-size: 1.5rem; color: var(--gold);">1650</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>4BR</strong></td>
+                            <td>~7,100,000</td>
+                            <td>4,650</td>
+                            <td>4,312</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5BR</strong></td>
+                            <td>~9,500,000</td>
+                            <td>6,538</td>
+                            <td>5,760</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cluster-info">
+                <h3>First 3 Clusters</h3>
+                <p style="font-size: 1.1rem; color: var(--secondary);">Initial launch clusters with detailed unit distribution</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cluster</th>
+                        <th>3BR</th>
+                        <th>4BR</th>
+                        <th>5BR</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cluster 1</strong></td>
+                        <td>200</td>
+                        <td>172</td>
+                        <td>11</td>
+                        <td><strong>383</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cluster 2</strong></td>
+                        <td>185</td>
+                        <td>232</td>
+                        <td>66</td>
+                        <td><strong>483</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cluster 3</strong></td>
+                        <td>173</td>
+                        <td>175</td>
+                        <td>49</td>
+                        <td><strong>397</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Analysis 1: Historical Performance -->
+        <section class="section">
+            <h2 class="section-title">Analysis 1: Emaar First Villa Releases</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Community</th>
+                        <th>Cluster</th>
+                        <th>Launch Year</th>
+                        <th>Launch Price (AED)</th>
+                        <th>Current Price (AED)</th>
+                        <th>Capital Appreciation</th>
+                        <th>ARR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Emirates Living</td>
+                        <td>The Meadows</td>
+                        <td>2002</td>
+                        <td>2,000,000</td>
+                        <td>11,000,000</td>
+                        <td>450.0%</td>
+                        <td>19.6%</td>
+                    </tr>
+                    <tr>
+                        <td>Arabian Ranches 1</td>
+                        <td>Savannah</td>
+                        <td>2004</td>
+                        <td>1,200,000</td>
+                        <td>9,800,000</td>
+                        <td>716.7%</td>
+                        <td>34.1%</td>
+                    </tr>
+                    <tr>
+                        <td>Arabian Ranches 2</td>
+                        <td>Casa</td>
+                        <td>2012</td>
+                        <td>2,200,000</td>
+                        <td>5,800,000</td>
+                        <td>163.6%</td>
+                        <td>12.6%</td>
+                    </tr>
+                    <tr>
+                        <td>Dubai Hills Estate</td>
+                        <td>Sidra Villas</td>
+                        <td>2016</td>
+                        <td>3,300,000</td>
+                        <td>10,000,000</td>
+                        <td>203.0%</td>
+                        <td>22.6%</td>
+                    </tr>
+                    <tr>
+                        <td>Emaar South</td>
+                        <td>Golf Links</td>
+                        <td>2017</td>
+                        <td>2,300,000</td>
+                        <td>5,000,000</td>
+                        <td>117.4%</td>
+                        <td>14.7%</td>
+                    </tr>
+                    <tr>
+                        <td>Arabian Ranches 3</td>
+                        <td>Caya</td>
+                        <td>2021</td>
+                        <td>3,400,000</td>
+                        <td>6,900,000</td>
+                        <td>102.9%</td>
+                        <td>25.7%</td>
+                    </tr>
+                    <tr>
+                        <td class="table-highlight">The Valley</td>
+                        <td class="table-highlight">Farm Gardens</td>
+                        <td class="table-highlight">2022</td>
+                        <td class="table-highlight">5,100,000</td>
+                        <td class="table-highlight">8,000,000</td>
+                        <td class="table-highlight">56.9%</td>
+                        <td class="table-highlight">19.0%</td>
+                    </tr>
+                    <tr>
+                        <td class="table-highlight">The Oasis</td>
+                        <td class="table-highlight">Palmiera</td>
+                        <td class="table-highlight">2023</td>
+                        <td class="table-highlight">8,100,000</td>
+                        <td class="table-highlight">11,000,000</td>
+                        <td class="table-highlight">35.8%</td>
+                        <td class="table-highlight">17.9%</td>
+                    </tr>
+                    <tr>
+                        <td style="background: rgba(245,166,35,0.2); color: var(--gold); font-weight: 700;">Grand Polo Club & Resort</td>
+                        <td style="background: rgba(245,166,35,0.2); color: var(--gold); font-weight: 700;">Montura</td>
+                        <td style="background: rgba(245,166,35,0.2); color: var(--gold); font-weight: 700;">2025</td>
+                        <td style="background: rgba(245,166,35,0.2); color: var(--gold); font-weight: 700;">5,500,000</td>
+                        <td style="background: rgba(245,166,35,0.2); color: var(--gold); font-weight: 700;">-</td>
+                        <td style="background: rgba(245,166,35,0.2);"></td>
+                        <td style="background: rgba(245,166,35,0.2);"></td>
+                    </tr>
+                    <tr class="table-highlight">
+                        <td colspan="5"><strong>Avg.</strong></td>
+                        <td><strong>230.8%</strong></td>
+                        <td><strong>20.8%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-text">
+                Emaar First Villa Releases have grown at <span class="highlight-number">18.7% ARR</span>
+                <br><br>
+                18.7% x 4 Years = <span class="highlight-number">74.8%</span> Capital Appreciation
+            </div>
+
+            <!-- ROI Scenarios -->
+            <h3 style="color: var(--primary); font-size: 1.75rem; text-align: center; margin: 3rem 0 2rem 0; font-weight: 600;">Capital Appreciation & ROE Scenarios</h3>
+            
+            <div class="roi-scenarios">
+                <div class="scenario-card">
+                    <div class="scenario-title">Case 1: Pessimistic</div>
+                    <div class="scenario-details">
+                        <div class="scenario-item">
+                            <span class="scenario-label">Launch Price</span>
+                            <span class="scenario-value">5,500,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Handover Price</span>
+                            <span class="scenario-value">8,250,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Capital Appreciation</span>
+                            <span class="scenario-value">50%</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Profit</span>
+                            <span class="scenario-value">2,750,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Paid until Handover</span>
+                            <span class="scenario-value">4,400,000 AED</span>
+                        </div>
+                        <div class="scenario-item" style="background: rgba(245,166,35,0.15); margin-top: 1rem;">
+                            <span class="scenario-label"><strong>ROE</strong></span>
+                            <span class="scenario-value" style="color: var(--gold);"><strong>62.50%</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <div class="scenario-title">Case 2: Realistic</div>
+                    <div class="scenario-details">
+                        <div class="scenario-item">
+                            <span class="scenario-label">Launch Price</span>
+                            <span class="scenario-value">5,500,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Handover Price</span>
+                            <span class="scenario-value">9,625,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Capital Appreciation</span>
+                            <span class="scenario-value">75%</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Profit</span>
+                            <span class="scenario-value">4,125,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Paid until Handover</span>
+                            <span class="scenario-value">4,400,000 AED</span>
+                        </div>
+                        <div class="scenario-item" style="background: rgba(245,166,35,0.15); margin-top: 1rem;">
+                            <span class="scenario-label"><strong>ROE</strong></span>
+                            <span class="scenario-value" style="color: var(--gold);"><strong>93.75%</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <div class="scenario-title">Case 3: Optimistic</div>
+                    <div class="scenario-details">
+                        <div class="scenario-item">
+                            <span class="scenario-label">Launch Price</span>
+                            <span class="scenario-value">5,500,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Handover Price</span>
+                            <span class="scenario-value">11,000,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Capital Appreciation</span>
+                            <span class="scenario-value">100%</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Profit</span>
+                            <span class="scenario-value">5,500,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Paid until Handover</span>
+                            <span class="scenario-value">4,400,000 AED</span>
+                        </div>
+                        <div class="scenario-item" style="background: rgba(245,166,35,0.15); margin-top: 1rem;">
+                            <span class="scenario-label"><strong>ROE</strong></span>
+                            <span class="scenario-value" style="color: var(--gold);"><strong>125.00%</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analysis 2: Price Projections -->
+        <section class="section">
+            <h2 class="section-title">Analysis 2: Emaar Raising Prices</h2>
+            
+            <div class="info-card">
+                <h3>12 Cluster Launches Expected in The Heights</h3>
+                <p>Historical data shows Emaar consistently increases prices with each new cluster launch. This analysis projects potential price appreciation across different scenarios.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="comparison-card">
+                    <div class="comparison-title">At 5% Price Raise</div>
+                    <table style="font-size: 0.95rem;">
+                        <thead>
+                            <tr>
+                                <th>Launch</th>
+                                <th>PSF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>1650</td></tr>
+                            <tr><td>2</td><td>1733</td></tr>
+                            <tr><td>3</td><td>1819</td></tr>
+                            <tr><td>4</td><td>1910</td></tr>
+                            <tr><td>5</td><td>2006</td></tr>
+                            <tr><td>6</td><td>2106</td></tr>
+                            <tr><td>7</td><td>2211</td></tr>
+                            <tr><td>8</td><td>2322</td></tr>
+                            <tr><td>9</td><td>2438</td></tr>
+                            <tr><td>10</td><td>2560</td></tr>
+                            <tr><td>11</td><td>2688</td></tr>
+                            <tr><td>12</td><td>2822</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="ca-result">CA = 71%</div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="comparison-title">At 6% Price Raise</div>
+                    <table style="font-size: 0.95rem;">
+                        <thead>
+                            <tr>
+                                <th>Launch</th>
+                                <th>PSF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>1650</td></tr>
+                            <tr><td>2</td><td>1749</td></tr>
+                            <tr><td>3</td><td>1854</td></tr>
+                            <tr><td>4</td><td>1965</td></tr>
+                            <tr><td>5</td><td>2083</td></tr>
+                            <tr><td>6</td><td>2208</td></tr>
+                            <tr><td>7</td><td>2341</td></tr>
+                            <tr><td>8</td><td>2481</td></tr>
+                            <tr><td>9</td><td>2630</td></tr>
+                            <tr><td>10</td><td>2788</td></tr>
+                            <tr><td>11</td><td>2955</td></tr>
+                            <tr><td>12</td><td>3132</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="ca-result">CA = 89.8%</div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="comparison-title">At 7% Price Raise</div>
+                    <table style="font-size: 0.95rem;">
+                        <thead>
+                            <tr>
+                                <th>Launch</th>
+                                <th>PSF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>1650</td></tr>
+                            <tr><td>2</td><td>1766</td></tr>
+                            <tr><td>3</td><td>1889</td></tr>
+                            <tr><td>4</td><td>2021</td></tr>
+                            <tr><td>5</td><td>2163</td></tr>
+                            <tr><td>6</td><td>2314</td></tr>
+                            <tr><td>7</td><td>2476</td></tr>
+                            <tr><td>8</td><td>2650</td></tr>
+                            <tr><td>9</td><td>2835</td></tr>
+                            <tr><td>10</td><td>3033</td></tr>
+                            <tr><td>11</td><td>3246</td></tr>
+                            <tr><td>12</td><td>3473</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="ca-result">CA = 110.5%</div>
+                </div>
+            </div>
+
+            <!-- Simplified View -->
+            <h3 style="color: var(--primary); font-size: 1.75rem; text-align: center; margin: 4rem 0 2rem 0; font-weight: 600;">Price Progression Summary</h3>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-title">5% Annual Increase</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Launch</th>
+                                <th>PSF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>1</strong></td><td>1650</td></tr>
+                            <tr><td><strong>12</strong></td><td>2822</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="ca-result">CA = 71%</div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="comparison-title">6% Annual Increase</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Launch</th>
+                                <th>PSF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>1</strong></td><td>1650</td></tr>
+                            <tr><td><strong>12</strong></td><td>3132</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="ca-result">CA = 89.8%</div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="comparison-title">7% Annual Increase</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Launch</th>
+                                <th>PSF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>1</strong></td><td>1650</td></tr>
+                            <tr><td><strong>12</strong></td><td>3473</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="ca-result">CA = 110.5%</div>
+                </div>
+            </div>
+
+            <!-- With 10% Lag -->
+            <h3 style="color: var(--primary); font-size: 1.75rem; text-align: center; margin: 4rem 0 2rem 0; font-weight: 600;">Considering a 10% Lag</h3>
+            <p style="text-align: center; color: var(--secondary); font-size: 1.1rem; margin-bottom: 3rem;">Conservative estimates accounting for potential market adjustments</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-title">5% Increase (10% Lag)</div>
+                    <div class="scenario-details">
+                        <div class="scenario-item">
+                            <span class="scenario-label">PSF at Launch 12</span>
+                            <span class="scenario-value">2540</span>
+                        </div>
+                    </div>
+                    <div class="ca-result">CA = 53.9%</div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="comparison-title">6% Increase (10% Lag)</div>
+                    <div class="scenario-details">
+                        <div class="scenario-item">
+                            <span class="scenario-label">PSF at Launch 12</span>
+                            <span class="scenario-value">2819</span>
+                        </div>
+                    </div>
+                    <div class="ca-result">CA = 70.8%</div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="comparison-title">7% Increase (10% Lag)</div>
+                    <div class="scenario-details">
+                        <div class="scenario-item">
+                            <span class="scenario-label">PSF at Launch 12</span>
+                            <span class="scenario-value">3126</span>
+                        </div>
+                    </div>
+                    <div class="ca-result">CA = 89.5%</div>
+                </div>
+            </div>
+
+            <!-- ROE Analysis with Price Increases -->
+            <h3 style="color: var(--primary); font-size: 1.75rem; text-align: center; margin: 4rem 0 2rem 0; font-weight: 600;">Capital Appreciation & ROE with Price Increases</h3>
+
+            <div class="roi-scenarios">
+                <div class="scenario-card">
+                    <div class="scenario-title">Case 1: At 5% Price Increase</div>
+                    <div class="scenario-details">
+                        <div class="scenario-item">
+                            <span class="scenario-label">Launch Price</span>
+                            <span class="scenario-value">5,500,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Handover Price</span>
+                            <span class="scenario-value">8,464,500 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Capital Appreciation</span>
+                            <span class="scenario-value">54%</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Profit</span>
+                            <span class="scenario-value">2,964,500 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Paid until Handover</span>
+                            <span class="scenario-value">4,400,000 AED</span>
+                        </div>
+                        <div class="scenario-item" style="background: rgba(245,166,35,0.15); margin-top: 1rem;">
+                            <span class="scenario-label"><strong>ROE</strong></span>
+                            <span class="scenario-value" style="color: var(--gold);"><strong>67.38%</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <div class="scenario-title">Case 2: At 6% Price Increase</div>
+                    <div class="scenario-details">
+                        <div class="scenario-item">
+                            <span class="scenario-label">Launch Price</span>
+                            <span class="scenario-value">5,500,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Handover Price</span>
+                            <span class="scenario-value">9,394,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Capital Appreciation</span>
+                            <span class="scenario-value">71%</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Profit</span>
+                            <span class="scenario-value">3,894,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Paid until Handover</span>
+                            <span class="scenario-value">4,400,000 AED</span>
+                        </div>
+                        <div class="scenario-item" style="background: rgba(245,166,35,0.15); margin-top: 1rem;">
+                            <span class="scenario-label"><strong>ROE</strong></span>
+                            <span class="scenario-value" style="color: var(--gold);"><strong>88.50%</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <div class="scenario-title">Case 3: At 7% Price Increase</div>
+                    <div class="scenario-details">
+                        <div class="scenario-item">
+                            <span class="scenario-label">Launch Price</span>
+                            <span class="scenario-value">5,500,000 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Handover Price</span>
+                            <span class="scenario-value">10,422,500 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Capital Appreciation</span>
+                            <span class="scenario-value">90%</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Profit</span>
+                            <span class="scenario-value">4,922,500 AED</span>
+                        </div>
+                        <div class="scenario-item">
+                            <span class="scenario-label">Paid until Handover</span>
+                            <span class="scenario-value">4,400,000 AED</span>
+                        </div>
+                        <div class="scenario-item" style="background: rgba(245,166,35,0.15); margin-top: 1rem;">
+                            <span class="scenario-label"><strong>ROE</strong></span>
+                            <span class="scenario-value" style="color: var(--gold);"><strong>111.87%</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Insights -->
+        <section class="section">
+            <h2 class="section-title">Key Investment Insights</h2>
+            
+            <div class="info-card">
+                <h3>Why The Heights Represents Exceptional Value</h3>
+                <p>✓ <strong>Exceptional Price Gap:</strong> Ready villas of this size from Emaar are currently trading at 2X the launch price (3,500 AED PSF onwards), representing massive value for first launch buyers at 1,650 PSF</p>
+                <p>✓ <strong>Unmatched Connectivity:</strong> The Heights is the only villa community in Dubai connected by 4 major highways/roads, providing seamless access to different parts of the city - a game changer for accessibility and convenience</p>
+                <p>✓ <strong>Transformational Investment:</strong> Emaar is investing AED 169 billion (USD 46 billion) in Heights, Oasis, and Grand Polo, while Al Maktoum Airport Entity is investing another USD 50 billion. This total USD 100 billion investment will transform the entire region beyond recognition</p>
+                <p>✓ <strong>Proven Track Record:</strong> Emaar's first villa releases have historically delivered an average ARR of 20.8% with capital appreciation of 230.8%</p>
+                <p>✓ <strong>Conservative 4-Year Projection:</strong> Based on 18.7% ARR, investors can expect approximately 74.8% capital appreciation by handover</p>
+                <p>✓ <strong>Multiple Growth Drivers:</strong> Both market appreciation and Emaar's systematic price increases across 12 planned cluster launches</p>
+                <p>✓ <strong>Realistic ROE Scenarios:</strong> Even in pessimistic scenarios, ROE exceeds 62%, with realistic projections showing 88-94% returns on equity</p>
+                <p>✓ <strong>Launch Advantage:</strong> First cluster pricing at 1650 PSF provides maximum upside potential as later launches will command premium pricing</p>
+                <p>✓ <strong>Flexible Payment Structure:</strong> 80% payment on handover reduces capital commitment during construction phase</p>
+            </div>
+
+            <div class="highlight-text">
+                Based on historical performance and market dynamics, The Heights first launch represents a <span class="highlight-number">prime investment opportunity</span> with strong fundamentals and multiple appreciation catalysts.
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section">
+            <div class="cta-section">
+                <h2>Secure Your Investment in The Heights</h2>
+                <p>
+                    First cluster launches offer the best value proposition. With only 3 clusters in the initial release and 12 planned launches, early investors benefit from the lowest PSF pricing and maximum appreciation potential.
+                </p>
+                <div class="cta-buttons">
+                    <a href="tel:+971585877330" class="cta-button">Request Detailed Brochure</a>
+                    <a href="tel:+971585877330" class="cta-button secondary">Schedule Site Visit</a>
+                </div>
+                <p style="margin-top: 2rem; font-size: 0.95rem; color: var(--secondary);">
+                    Limited units available | First cluster pricing | Contact for exclusive pre-launch offers
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-title">THE HEIGHTS</p>
+        <p style="color: var(--secondary); margin-bottom: 2rem;">COUNTRY CLUB & WELLNESS</p>
+        <p style="color: var(--secondary); margin-bottom: 2rem;">Prepared by <strong style="color: var(--primary);">Viren</strong> | <a href="tel:+971585877330" style="color: var(--accent); text-decoration: none;">+971 58 587 7330</a></p>
+        <p style="margin-top: 2rem;">
+            <strong>Disclaimer:</strong> This analysis is based on historical performance data and market projections. Past performance does not guarantee future results. All figures are estimates and subject to market conditions. Please consult with financial advisors and conduct your own due diligence before making investment decisions.
+        </p>
+    </footer>
+</body>
+</html>
